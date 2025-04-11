@@ -13,43 +13,33 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> { 
-  String myText = 'Waiting for button press...';
-
-  void buttonPressed() {
-    setState(() {
-      myText = 'Button Pressed!';
-    });
-  }
+class HomePage extends StatelessWidget {
+  final List<String> items = [
+    'Item 1',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+    'Item 6',
+    'Item 7',
+    'Item 8',
+    'Item 9',
+    'Item 10',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Button App'),
+        title: Text('My List App'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              myText,
-              style: TextStyle(fontSize: 20),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: buttonPressed,
-              child: Text('Press Me'),
-            ),
-          ],
-        ),
+      body: ListView(
+        children: items.map((item) {
+          return ListTile(
+            title: Text(item),
+          );
+        }).toList(),
       ),
     );
   }
-}
-
+} 
